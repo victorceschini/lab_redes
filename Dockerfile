@@ -1,11 +1,13 @@
-FROM python:3-slim
+FROM nginx:1.24.0-alpine-slim
 
-LABEL version="1.0.0" description="Exemplo de Servidor TCP do Kurose" maintainer="Victor Ceschini <victorceschinie@academico.ufs.br>"
+LABEL version="1.0.0" description="Empresa openstreetmap" maintainer="Victor Ceschini <victorceschinie@academico.ufs.br>"
 
-WORKDIR /usr/src/tcpcapital
+RUN rm /etc/nginx/conf.d/default.con
 
-COPY . .
+COPY nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 12000
+COPY index.html /var/www/html
 
-CMD [ "python3", "./TCPServer.py" ]
+EXPOSE 61088
+
+CMD [ "nginx", "-g", "daemon:off;"]
