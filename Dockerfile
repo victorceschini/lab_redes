@@ -4,10 +4,10 @@ LABEL version="1.0.0" description="Empresa openstreetmap" maintainer="Victor Ces
 
 RUN rm /etc/nginx/conf.d/default.conf
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY /etc/nginx/nginx.conf /etc/nginx/nginx.conf
 
-COPY index.html /var/www/html
+COPY /var/www/html/index.html /var/www/html
 
-EXPOSE 61088
+EXPOSE 80
 
 CMD [ "nginx", "-g", "daemon:off;"]
